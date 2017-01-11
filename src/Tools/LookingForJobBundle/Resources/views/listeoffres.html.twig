@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+{% block main %}
+<div class="well">
+    <h3>Liste d'offres</h3>
+    <table class="mydatatable table table-striped">
+	<thead>
+    <tr><th>id</th><th>Titre</th><th>Publication</th><th>Der. contact</th><th>Statut</th><th>Métier</th><th><a href="{{path('tools_looking_for_job_addoffre')}}" title="Ajouter"><span class="glyphicon glyphicon-plus"></span></a></th></tr>
+	</thead>
+	<tbody>
+    {% for offre in ListeOffres %}
+        <tr>
+            <td>{{offre.id}}</td>
+            <td><a href="{{path('tools_looking_for_job_ficheoffre', {'id': offre.id})}}">{{offre.titre}}</a></td>
+            <td>{{offre.datePublication|date("d/m/Y")}}</td>
+            <td>{{offre.dateDernierContact|date("d/m/Y")}}</td>
+            <td>{{offre.statut}}</td>
+            <td>{{offre.metier}}</td>
+            <td>
+                <a href="{{path('tools_looking_for_job_editoffre', {'id': offre.id})}}" style="color:green" title="Editer">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
+                 
+                <a href="{{path('tools_looking_for_job_deloffre', {'id': offre.id})}}" style="color:red" title="Supprimer" data-confirm="Etes-vous certain de vouloir supprimer?">
+                    <span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+        </tr>
+    {% endfor %}
+	</tbody>
+    </table>
+</div>
+{% endblock %}

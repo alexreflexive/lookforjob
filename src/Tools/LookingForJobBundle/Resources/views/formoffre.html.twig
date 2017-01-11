@@ -1,0 +1,106 @@
+{% extends "::base.html.twig" %}
+{% block main %}
+<h3 style="text-align: center;">Ajout d'une offre</h3>
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  {# Les erreurs générales du formulaire. #}
+  {{ form_errors(form) }}
+
+  {# TITRE #}
+  <div class="form-group">
+    {{ form_label(form.titre, "Titre de l'offre", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.titre) }}
+
+    <div class="col-sm-10">
+      {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# URL #}
+  <div class="form-group">
+    {{ form_label(form.url, "URL", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.url) }}
+
+    <div class="col-sm-10">
+      {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# DATE PUBLICATION #}
+  <div class="form-group">
+    {{ form_label(form.date_publication, "Date de publication", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.date_publication) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.date_publication) }}
+    </div>
+  </div>
+
+  {# DATE DERNIER CONTACT #}
+  <div class="form-group">
+    {{ form_label(form.date_dernier_contact, "Date de dernier contact", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.date_dernier_contact) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.date_dernier_contact) }}
+    </div>
+  </div>
+
+  {# CONTACT #}
+  <div class="form-group">
+    {{ form_label(form.contact, "Contact", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.contact) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.contact, {'attr': {'class': 'form-control', 'COLS': '10', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+  {# TEXTE #}
+  <div class="form-group">
+    {{ form_label(form.texte, "Texte de l'offre", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.texte) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.texte, {'attr': {'class': 'form-control', 'rows': '10'}}) }}
+    </div>
+  </div>
+  {# COMMENTAIRES #}
+  <div class="form-group">
+    {{ form_label(form.commentaires, "Commentaires", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.commentaires) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.commentaires, {'attr': {'class': 'form-control', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+  {# METIER #}
+  <div class="form-group">
+    {{ form_label(form.metier, "Métier", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.metier) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.metier, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# STATUT #}
+  <div class="form-group">
+    {{ form_label(form.statut, "Statut", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.statut) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary center-block'}}) }}
+    </div>
+  </div>
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+
+{% endblock %}

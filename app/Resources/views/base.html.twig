@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Looking for job !{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="container">
+      <header>{% block header %}{% endblock %}</header>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{{path('tools_looking_for_job_listeoffres')}}">Look for job</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="{{path('tools_looking_for_job_listeoffres')}}">Liste</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Statistiques</a></li>
+              <li class="active"><a href="#">Listes</a></li>
+              <li><a>Fiches</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <main class="well">
+        {% block main %}{% endblock %}
+      </main>
+
+      <footer style="text-align: center;">Tutoriel OC sur <a href="https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony" target="_blank">Symfony 3</a>.</footer>.
+
+        {% block javascripts %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+            <script>
+              $(document).ready(function(){
+
+                  $('.mydatatable').DataTable();
+
+                  $('a[data-confirm]').click(function(ev) {
+                    var href = $(this).attr('href');
+                    
+                    if (!$('#dataConfirmModal').length) {
+                      $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Merci de confirmer</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Non</button><a class="btn btn-danger" id="dataConfirmOK">Oui</a></div></div></div></div>');
+                    }
+                    $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+                    $('#dataConfirmOK').attr('href', href);
+                    $('#dataConfirmModal').modal({show:true});
+                    
+                    return false;
+                  });
+
+              });
+
+            </script>            
+        {% endblock %}
+    </body>
+</html>

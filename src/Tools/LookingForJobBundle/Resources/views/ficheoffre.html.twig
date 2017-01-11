@@ -1,0 +1,41 @@
+{% extends "::base.html.twig" %}
+{% block main %}
+<div class="well">
+    <h3 style="text-align: center;">{{offre.id}}. <em>{{offre.titre}}</em> </h3>
+    <p><a href="{{offre.url}}" target="_blank">{{offre.url}}</a></p>
+    <table style="width:100%;">
+        <tr><td style="width:15%">Publication</td><td style="width:15%">Dernier contact</td>
+            <td style="width:15%">Metier</td><td style="width:15%">Statut</td>
+                <td style="width:40%;text-align: right;">
+                <a href="{{path('tools_looking_for_job_editoffre', {'id': offre.id})}}" style="color:green" title="Editer">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="{{path('tools_looking_for_job_deloffre', {'id': offre.id})}}" style="color:red" title="Supprimer" data-confirm="Etes-vous certain de vouloir supprimer?">
+                    <span class="glyphicon glyphicon-remove"></span></a></td></tr>
+
+        <tr>
+            <td>{{offre.datePublication|date("d/m/Y")}}</td>
+            <td>{{offre.dateDernierContact|date("d/m/Y")}}</td>
+            <td>{{stringitems.metier}}</td>
+            <td>{{stringitems.statut}}</td>
+        </tr>
+    </table>
+
+    <div style="width:250px;">
+        <h4>Contact</h4>
+        {{offre.contact | nl2br}}
+    </div>
+
+    <div>
+        <h4>Texte de l'offre</h4>
+        {{offre.texte | nl2br}}
+    </div>
+            
+    {% if offre.commentaires != "" %}
+    <div>
+        <h4>Commentaires sur l'offre</h4>
+        {{offre.commentaires | nl2br}}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+

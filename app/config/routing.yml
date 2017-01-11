@@ -1,0 +1,7 @@
+tools_looking_for_job:
+    resource: "@ToolsLookingForJobBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

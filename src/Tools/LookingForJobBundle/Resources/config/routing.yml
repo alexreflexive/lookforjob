@@ -1,0 +1,23 @@
+tools_looking_for_job_accueil:
+    path:     /
+    defaults: { _controller: ToolsLookingForJobBundle:Offres:index }
+
+tools_looking_for_job_listeoffres:
+    path:     /listeoffres
+    defaults: { _controller: ToolsLookingForJobBundle:Offres:index }
+
+tools_looking_for_job_ficheoffre:
+    path:     /ficheoffre/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Offres:ficheoffre }
+
+tools_looking_for_job_addoffre:
+    path:     /addoffre
+    defaults: { _controller: ToolsLookingForJobBundle:Offres:addoffre }
+
+tools_looking_for_job_editoffre:
+    path:     /editoffre/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Offres:editoffre }
+
+tools_looking_for_job_deloffre:
+    path:     /deloffre/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Offres:deloffre }
