@@ -1,3 +1,4 @@
+# Offres
 tools_looking_for_job_accueil:
     path:     /
     defaults: { _controller: ToolsLookingForJobBundle:Offres:index }
@@ -21,3 +22,45 @@ tools_looking_for_job_editoffre:
 tools_looking_for_job_deloffre:
     path:     /deloffre/{id}
     defaults: { _controller: ToolsLookingForJobBundle:Offres:deloffre }
+
+# Annonceurs
+tools_looking_for_job_listeannonceurs:
+    path:     /listeannonceurs
+    defaults: { _controller: ToolsLookingForJobBundle:Annonceurs:index }
+
+tools_looking_for_job_ficheannonceur:
+    path:     /ficheannonceur/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Annonceurs:ficheannonceur }
+
+tools_looking_for_job_addannonceur:
+    path:     /addannonceur
+    defaults: { _controller: ToolsLookingForJobBundle:Annonceurs:addannonceur }
+
+tools_looking_for_job_editannonceur:
+    path:     /editannonceur/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Annonceurs:editannonceur }
+
+tools_looking_for_job_delannonceur:
+    path:     /delannonceur/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Annonceurs:delannonceur }    
+
+# Sources
+tools_looking_for_job_listesources:
+    path:     /listesources
+    defaults: { _controller: ToolsLookingForJobBundle:Sources:index }
+
+tools_looking_for_job_fichesource:
+    path:     /fichesource/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Sources:fichesource }
+
+tools_looking_for_job_addsource:
+    path:     /addsource
+    defaults: { _controller: ToolsLookingForJobBundle:Sources:addsource }
+
+tools_looking_for_job_editsource:
+    path:     /editsource/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Sources:editsource }
+
+tools_looking_for_job_delsource:
+    path:     /delsource/{id}
+    defaults: { _controller: ToolsLookingForJobBundle:Sources:delsource }  

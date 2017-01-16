@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Offre
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Tools\LookingForJobBundle\Entity\Annonceur")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $annonceur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tools\LookingForJobBundle\Entity\Source")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $source;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -317,5 +329,53 @@ class Offre
     public function getCommentaires()
     {
         return $this->commentaires;
+    }
+
+    /**
+     * Set annonceur
+     *
+     * @param \Tools\LookingForJobBundle\Entity\Annonceur $annonceur
+     *
+     * @return Offre
+     */
+    public function setAnnonceur(\Tools\LookingForJobBundle\Entity\Annonceur $annonceur)
+    {
+        $this->annonceur = $annonceur;
+
+        return $this;
+    }
+
+    /**
+     * Get annonceur
+     *
+     * @return \Tools\LookingForJobBundle\Entity\Annonceur
+     */
+    public function getAnnonceur()
+    {
+        return $this->annonceur;
+    }
+
+    /**
+     * Set source
+     *
+     * @param \Tools\LookingForJobBundle\Entity\Source $source
+     *
+     * @return Offre
+     */
+    public function setSource(\Tools\LookingForJobBundle\Entity\Source $source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return \Tools\LookingForJobBundle\Entity\Source
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }

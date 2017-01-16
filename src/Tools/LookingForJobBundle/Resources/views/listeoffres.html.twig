@@ -13,8 +13,8 @@
             <td><a href="{{path('tools_looking_for_job_ficheoffre', {'id': offre.id})}}">{{offre.titre}}</a></td>
             <td>{{offre.datePublication|date("d/m/Y")}}</td>
             <td>{{offre.dateDernierContact|date("d/m/Y")}}</td>
-            <td>{{offre.statut}}</td>
-            <td>{{offre.metier}}</td>
+            <td>{{statut[offre.statut]}}</td>
+            <td>{{metier[offre.metier]}}</td>
             <td>
                 <a href="{{path('tools_looking_for_job_editoffre', {'id': offre.id})}}" style="color:green" title="Editer">
                     <span class="glyphicon glyphicon-pencil"></span></a>

@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+{% block main %}
+<div class="well">
+    <h3>Liste des sources</h3>
+    <table class="mydatatable table table-striped">
+	<thead>
+    <tr><th>id</th><th>Source</th><th>URL</th><th><a href="{{path('tools_looking_for_job_addsource')}}" title="Ajouter"><span class="glyphicon glyphicon-plus"></span></a></th></tr>
+	</thead>
+	<tbody>
+    {% for source in ListeSources %}
+        <tr>
+            <td>{{source.id}}</td>
+            <td><a href="{{path('tools_looking_for_job_fichesource', {'id': source.id})}}">{{source.nom}}</a></td>
+            <td><a href="{{source.url}}">{{source.url}}</a></td>
+
+            <td>
+                <a href="{{path('tools_looking_for_job_editsource', {'id': source.id})}}" style="color:green" title="Editer">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
+                 
+                <a href="{{path('tools_looking_for_job_delsource', {'id': source.id})}}" style="color:red" title="Supprimer" data-confirm="Etes-vous certain de vouloir supprimer?">
+                    <span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+
+        </tr>
+    {% endfor %}
+	</tbody>
+    </table>
+</div>
+{% endblock %}

@@ -4,21 +4,34 @@
     <h3 style="text-align: center;">{{offre.id}}. <em>{{offre.titre}}</em> </h3>
     <p><a href="{{offre.url}}" target="_blank">{{offre.url}}</a></p>
     <table style="width:100%;">
-        <tr><td style="width:15%">Publication</td><td style="width:15%">Dernier contact</td>
-            <td style="width:15%">Metier</td><td style="width:15%">Statut</td>
-                <td style="width:40%;text-align: right;">
+        <tr>
+            <td style="width:15%">Publication</td>
+            <td style="width:15%">Dernier contact</td>
+            <td style="width:15%">Metier</td>
+            <td style="width:15%">Statut</td>
+            <td style="width:15%">Source</td>
+            <td style="width:30%;text-align: right;">
                 <a href="{{path('tools_looking_for_job_editoffre', {'id': offre.id})}}" style="color:green" title="Editer">
                     <span class="glyphicon glyphicon-pencil"></span></a>
                 <a href="{{path('tools_looking_for_job_deloffre', {'id': offre.id})}}" style="color:red" title="Supprimer" data-confirm="Etes-vous certain de vouloir supprimer?">
-                    <span class="glyphicon glyphicon-remove"></span></a></td></tr>
+                    <span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+        </tr>
 
-        <tr>
+        <tr style="font-weight: bold;">
             <td>{{offre.datePublication|date("d/m/Y")}}</td>
             <td>{{offre.dateDernierContact|date("d/m/Y")}}</td>
             <td>{{stringitems.metier}}</td>
             <td>{{stringitems.statut}}</td>
+            <td>{{offre.source.nom}}</td>
+            <td>&nbsp;</td>
         </tr>
     </table>
+
+    <div style="width:250px;">
+        <h4>Annonceur</h4>
+        <a href="{{path('tools_looking_for_job_ficheannonceur', {'id': offre.annonceur.id})}}"> {{offre.annonceur.entreprise}}</a>
+    </div>
 
     <div style="width:250px;">
         <h4>Contact</h4>

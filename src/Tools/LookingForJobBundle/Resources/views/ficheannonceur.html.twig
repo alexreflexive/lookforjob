@@ -1,0 +1,47 @@
+{% extends "::base.html.twig" %}
+{% block main %}
+<div class="well">
+    <h3 style="text-align: center;">{{annonceur.id}}. <em>{{annonceur.entreprise}}</em> </h3>
+    <p><a href="{{annonceur.url}}" target="_blank">{{annonceur.url}}</a></p>
+
+<div style="width:100%;text-align: right;">
+                <a href="{{path('tools_looking_for_job_editannonceur', {'id': annonceur.id})}}" style="color:green" title="Editer">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="{{path('tools_looking_for_job_delannonceur', {'id': annonceur.id})}}" style="color:red" title="Supprimer" data-confirm="Etes-vous certain de vouloir supprimer?">
+                    <span class="glyphicon glyphicon-remove"></span></a></div>
+
+    <fieldset>
+    	<legend>Contact</legend>
+    <div style="width:250px;">
+        {{annonceur.contactNomPrenom }}
+    </div>
+
+    <div style="width:250px;">
+        {{annonceur.contactFixe }}
+    </div>
+
+    <div style="width:250px;">
+        {{annonceur.contactPortable }}
+    </div>
+
+    <div style="width:250px;">
+        {{annonceur.contactEmail }}
+    </div>
+
+    </fieldset>
+
+    {% if annonceur.presentation != "" %}
+    <div>
+        <h4>Présentation de l'annonceur</h4>
+        {{annonceur.presentation | nl2br}}
+    </div>
+    {% endif %}
+           
+    {% if annonceur.commentaires != "" %}
+    <div>
+        <h4>Commentaires sur l'annonceur</h4>
+        {{annonceur.commentaires | nl2br}}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

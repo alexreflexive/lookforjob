@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+{% block main %}
+<div class="well">
+    <h3 style="text-align: center;">{{source.id}}. <em>{{source.nom}}</em> </h3>
+    <p><a href="{{source.url}}" target="_blank">{{source.url}}</a></p>
+
+<div style="width:100%;text-align: right;">
+                <a href="{{path('tools_looking_for_job_editsource', {'id': source.id})}}" style="color:green" title="Editer">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="{{path('tools_looking_for_job_delsource', {'id': source.id})}}" style="color:red" title="Supprimer" data-confirm="Etes-vous certain de vouloir supprimer?">
+                    <span class="glyphicon glyphicon-remove"></span></a>
+</div>
+
+    {% if source.cvDocument %}
+    <div>
+    	CV uploadé au format .pdf, .doc ou autre.
+    </div>
+    {% endif %}
+
+    {% if source.cvFormulaire %}
+    <div>
+    	CV créé via formulaire.
+    </div>
+    {% endif %}
+
+
+{% endblock %}

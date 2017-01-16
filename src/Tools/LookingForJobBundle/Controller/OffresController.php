@@ -5,6 +5,8 @@ namespace Tools\LookingForJobBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Tools\LookingForJobBundle\Entity\Offre;
+use Tools\LookingForJobBundle\Entity\Annonceur;
+use Tools\LookingForJobBundle\Entity\Source;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -12,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class OffresController extends Controller
 {
@@ -25,7 +28,11 @@ class OffresController extends Controller
           ->getManager()
           ->getRepository('ToolsLookingForJobBundle:Offre');
         $liste_offres=$repository->findAll();
-        return $this->render('ToolsLookingForJobBundle::listeoffres.html.twig', array('ListeOffres'=>$liste_offres));
+        return $this->render('ToolsLookingForJobBundle::listeoffres.html.twig', array(
+            'ListeOffres'=>$liste_offres,
+            'statut'=>$this->getStatus(self::ALLARRAY),
+            'metier'=>$this->getMetier(self::ALLARRAY),
+            ));
     }
 
     public function ficheoffreAction($id)
@@ -46,6 +53,15 @@ class OffresController extends Controller
 
     public function addoffreAction(Request $request)
     {
+        /*
+        $rep_annonceur = $this->getDoctrine()->getManager()->getRepository('ToolsLookingForJobBundle:Annonceur');
+        //$annonceur = $rep_annonceur->find(1);
+        $annonceurs = $rep_annonceur->findAll();
+        //var_dump($annonceurs) ;
+
+        $rep_source = $this->getDoctrine()->getManager()->getRepository('ToolsLookingForJobBundle:Source');
+        $source = $rep_source->find(1);
+*/
         // L'objet Offre
         $offre = new Offre();
 
@@ -54,6 +70,12 @@ class OffresController extends Controller
         $formBuilder
             ->add('titre', TextType::class)
             ->add('url', TextType::class, array('required'=>false))
+            ->add('annonceur', EntityType::class, array(
+                'class'=>'ToolsLookingForJobBundle:Annonceur',
+                'choice_label'=>'entreprise'))
+            ->add('source', EntityType::class, array(
+                'class'=>'ToolsLookingForJobBundle:Source',
+                'choice_label'=>'nom'))
             ->add('contact', TextareaType::class, array('required'=>false))
             ->add('texte', TextareaType::class)
             ->add('date_publication', DateType::class)
@@ -90,6 +112,10 @@ class OffresController extends Controller
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
+
+                //$offre->setAnnonceur($annonceur) ;
+                //$offre->setSource($source) ;
+
                 // On récupère l'EntityManager
                 $em = $this->getDoctrine()->getManager();
 
@@ -129,6 +155,13 @@ class OffresController extends Controller
         $formBuilder
             ->add('titre', TextType::class)
             ->add('url', TextType::class, array('required'=>false))
+            ->add('annonceur', EntityType::class, array(
+                'class'=>'ToolsLookingForJobBundle:Annonceur',
+                'choice_label'=>'entreprise',
+                'choice_attr'=>[1=>['class'=>'selectpicker']]))
+            ->add('source', EntityType::class, array(
+                'class'=>'ToolsLookingForJobBundle:Source',
+                'choice_label'=>'nom'))
             ->add('contact', TextareaType::class, array('required'=>false))
             ->add('texte', TextareaType::class)
             ->add('date_publication', DateType::class)

@@ -1,0 +1,100 @@
+{% extends "::base.html.twig" %}
+{% block main %}
+
+<h3 style="text-align: center;">Formulaire d'annonceur</h3>
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  {# Les erreurs générales du formulaire. #}
+  {{ form_errors(form) }}
+
+  {# ENTREPRISE #}
+  <div class="form-group">
+    {{ form_label(form.Entreprise, "Entreprise", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.Entreprise) }}
+
+    <div class="col-sm-10">
+      {{ form_widget(form.Entreprise, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# URL #}
+  <div class="form-group">
+    {{ form_label(form.url, "URL", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.url) }}
+
+    <div class="col-sm-10">
+      {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# CONTACT NOM PRENOM #}
+  <div class="form-group">
+    {{ form_label(form.contact_nom_prenom, "Nom, prénom du contact", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.contact_nom_prenom) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.contact_nom_prenom, {'attr': {'class': 'form-control', 'COLS': '10', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+  {# CONTACT EMAIL #}
+  <div class="form-group">
+    {{ form_label(form.contact_email, "Email du contact", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.contact_email) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.contact_email, {'attr': {'class': 'form-control', 'COLS': '10', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+  {# CONTACT FIXE #}
+  <div class="form-group">
+    {{ form_label(form.contact_fixe, "Nom, numéro fixe", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.contact_fixe) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.contact_fixe, {'attr': {'class': 'form-control', 'COLS': '10', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+  {# CONTACT PORTABLE #}
+  <div class="form-group">
+    {{ form_label(form.contact_portable, "Numéro de portable contact", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.contact_portable) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.contact_portable, {'attr': {'class': 'form-control', 'COLS': '10', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+  {# PRESENTATION #}
+  <div class="form-group">
+    {{ form_label(form.presentation, "Présentation de l'entreprise", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.presentation) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.presentation, {'attr': {'class': 'form-control', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+  {# COMMENTAIRES #}
+  <div class="form-group">
+    {{ form_label(form.commentaires, "Commentaires", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.commentaires) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.commentaires, {'attr': {'class': 'form-control', 'rows': '10'}}) }}
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary center-block'}}) }}
+    </div>
+  </div>
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+
+{% endblock %}

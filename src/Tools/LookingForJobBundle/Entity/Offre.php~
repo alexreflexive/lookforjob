@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Offre
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Tools\LookingForJobBundle\Entity\Annonceur")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $annonceur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tools\LookingForJobBundle\Entity\Source")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $source;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -293,5 +305,29 @@ class Offre
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set commentaires
+     *
+     * @param string $commentaires
+     *
+     * @return Offre
+     */
+    public function setCommentaires($commentaires)
+    {
+        $this->commentaires = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return string
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }
