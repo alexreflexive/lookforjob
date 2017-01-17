@@ -76,11 +76,11 @@ class OffresController extends Controller
             ->add('source', EntityType::class, array(
                 'class'=>'ToolsLookingForJobBundle:Source',
                 'choice_label'=>'nom'))
-            ->add('contact', TextareaType::class, array('required'=>false))
+            ->add('contact', TextareaType::class, array('required'=>true))
             ->add('texte', TextareaType::class)
             ->add('date_publication', DateType::class)
             ->add('date_dernier_contact', DateType::class)
-            ->add('commentaires', TextareaType::class, array('required' => false))
+            ->add('commentaires', TextareaType::class, array('required' => true))
             ->add('metier', ChoiceType::class, array(
                 'choices'=>array(
                     'N\'importe quoi'=>0,
@@ -162,7 +162,7 @@ class OffresController extends Controller
             ->add('source', EntityType::class, array(
                 'class'=>'ToolsLookingForJobBundle:Source',
                 'choice_label'=>'nom'))
-            ->add('contact', TextareaType::class, array('required'=>false))
+            ->add('contact', TextareaType::class, array('required'=>true))
             ->add('texte', TextareaType::class)
             ->add('date_publication', DateType::class)
             ->add('date_dernier_contact', DateType::class)
